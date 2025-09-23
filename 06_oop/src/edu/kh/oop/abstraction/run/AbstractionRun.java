@@ -8,7 +8,6 @@ public class AbstractionRun {
 		// 서비스 클래스 객체 생성
 		AbstractionService as = new AbstractionService();
 		as.ex1();
-
 	}
 
 }
