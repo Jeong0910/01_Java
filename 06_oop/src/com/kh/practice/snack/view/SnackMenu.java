@@ -31,7 +31,7 @@ public class SnackMenu {
 		char result = sc.next().charAt(0);
 		
 		if(result == 'y') {
-			System.out.printf();
+			System.out.println(scr.confirmData() );
 		}
 
 	}

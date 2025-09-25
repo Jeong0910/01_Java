@@ -13,7 +13,7 @@ public class SnackController {
 		s.setName(name);
 		s.setFlavor(flavour);
 		s.setNumOf(numOf);
-		s.setFlavor(flavour);
+		s.setPrice(price);
 		
 		return "저장 완료되었습니다.\n" + "저장한 정보를 확인하겠습니까?(y/n) : ";
 
