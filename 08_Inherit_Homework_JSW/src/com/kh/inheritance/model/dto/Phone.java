@@ -1,14 +1,16 @@
 package com.kh.inheritance.model.dto;
 
 public class Phone {
-	private String brand; // 브랜드
-	private String model; // 모델명
-	private int year; // 출시년도
-	private int price; // 가격
+	
+	private String brand;
+	private String model;
+	private int year;
+	private int price;
 	
 	public Phone() {}
 
 	public Phone(String brand, String model, int year, int price) {
+		super();
 		this.brand = brand;
 		this.model = model;
 		this.year = year;
@@ -47,15 +49,12 @@ public class Phone {
 		this.price = price;
 	}
 	
-	public void printInfo() {
+	public void printinfo() {
+		
 		System.out.println("Brand : " + brand);
 		System.out.println("Model : " + model);
 		System.out.println("Year : " + year);
 		System.out.println("Price : " + price + "원");
-		 
 	}
-	
-	
-	
 	
 }

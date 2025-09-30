@@ -6,20 +6,14 @@ import com.kh.inheritance.model.dto.SmartPhone;
 public class Run {
 	public static void main(String[] args) {
 		
-		// SmartPhone 객체 생성
-		SmartPhone sp = new SmartPhone("Samsung", "Galaxy S20", 2020, 
-				1200000, "Android", 128);
+		SmartPhone sp = new SmartPhone("Samsung","Galaxy S20",2020,120000,"Android",128);
+		sp.printinfo();
 		
-		sp.printInfo();
+		System.out.println("===========================================");
 		
-		System.out.println("=============================");
-		
-		// BasicPhone 객체 생성
-		BasicPhone bp = new BasicPhone("Nokia", "3310", 2000, 100000, true);
-		
-		bp.printInfo();
+		BasicPhone bp = new BasicPhone("Nokia","3310",2000,10000,true);
+		bp.printinfo();
 		bp.checkKeyboard();
-		
 		
 		
 	}
