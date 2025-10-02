@@ -85,7 +85,7 @@ public class BookService {
 		System.out.print("도서 번호 : ");
 		int num = sc.nextInt();
 		System.out.print("도서 제목 : ");
-		String title = sc.nextLine();
+		String title = sc.next();		
 		System.out.print("도서 저자 : ");
 		String author = sc.next();
 		System.out.print("도서 가격 : ");
@@ -112,9 +112,7 @@ public class BookService {
 			return;
 		}
 
-		int input = 0;
 		for (Book book : bookList) {
-			System.out.print((input++) + "번 : ");
 			System.out.println(book);
 
 		}
@@ -122,7 +120,9 @@ public class BookService {
 	
 	public String updateBook() {
 		
-		System.out.println(bookList);
+		for (Book book : bookList) {
+			System.out.println(book);
+		}
 		
 		System.out.println("=======도서 수정=======");
 		
@@ -132,10 +132,45 @@ public class BookService {
 		if(bookList.isEmpty()) {
 			return "입력된 도서 번호가 없습니다";
 		}
+		if(num < 0) return "음수는 입력할 수 없습니다";
+		if(num >= bookList.size()) return "범위를 넘선 값을 입력할 수 없습니다";
+		
+		int menuNum = 0;
+		
+		do {
+			
+			try {
+				
+				System.out.println("1. 도서명");
+				System.out.println("2. 도서 저자");
+				System.out.println("3. 도서 가격");
+				System.out.println("4. 도서 출판사");
+				System.out.println("0. 수정 종료");
+				
+				System.out.print("어떤 정보를 수정하시겠습니까? ");
+				menuNum = sc.nextInt();
+				
+				sc.nextLine();
+				
+				switch (menuNum) {
+				case 1: System.out.println("수정할 도서명을 입력하세요 : ");
+				String title = sc.next(); break;
+				case 2: System.out.println("수정할 저자명을 입력하세요 : ");
+				String author = sc.next(); break;
+				case 3: System.out.println("수정할 가격을 입력하세요 : ");
+				int price = sc.nextInt(); break;
+				case 4: System.out.println("수정할 출판사를 입력하세요 : ");
+				String publisher = sc.next(); break;
+				case 0: System.out.print("종료합니다...\n");
+				}
+				
+			} catch (InputMismatchException e) {
+				
+			}
+			
+		} while (menuNum != 0);
 		
 		
-		
-		
-		return "";
+		return "==모든 수정 완료==";
 	}
 }
