@@ -1,16 +1,17 @@
 package com.hw1.model.dto;
 
-public class Textbook extends Book {
-
-	private String subject;
-
-	public Textbook() {
-	}
-
+public class Textbook extends Book{ // 전문서적 도서 클래스
+	
+	private String subject; //과목
+	
+	public Textbook() {}
+	
 	public Textbook(String title, String author, String subject) {
 		super(title, author);
 		this.subject = subject;
 	}
+
+	
 
 	public String getSubject() {
 		return subject;
@@ -22,8 +23,16 @@ public class Textbook extends Book {
 
 	@Override
 	public void displayInfo() {
-		System.out.print("[전문서적] 제목 : "+ getTitle() + "/"+"저자 : "+ getAuthor() + "과목 : " + subject);
-
+		System.out.printf("[전문 서적] 제목 : %s / 저자 : %s / 과목 : %s",
+					super.getTitle(), super.getAuthor(), subject
+				);
 	}
 
+	
+	
+	
+	
+	
+	
+	
 }

@@ -99,9 +99,7 @@ public class MapService {
 		// List 객체 생성되었고, 해당 list에서는 Map만 들어올 수 있음을 제시함.
 		// -> Map객체는 아직 생성되지 않았다.
 
-		for (int i = 0; i < 10; i++)
-			;
-		{
+		for (int i = 0; i < 10; i++) {
 			// Map 객체 생성
 			Map<String, Object> map = new LinkedHashMap<>();
 			// HashMap은 순서를 보장하지 않는 자료구조
@@ -109,8 +107,8 @@ public class MapService {
 			// -> LinkedHashMap은 put 한 순서를 유지 시켜줌.
 
 			// Map에 데이터 추가
-			map.put("id", "user0" + i);
-			map.put("pw", "pass0" + i);
+			map.put("id", "user0" + i );
+			map.put("pw", "pass0" + i );
 
 			// Map을 list에 추가
 			list.add(map);

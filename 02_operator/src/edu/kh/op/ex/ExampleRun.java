@@ -6,13 +6,13 @@ public class ExampleRun {
 	public static void main(String[] args) {
 		
 		OpExample opEx = new OpExample();
-		//opEx.ex1();
-		//opEx.ex2();
-		//opEx.testEx1();
-		//opEx.testEx2();
-		//opEx.testEx3();
-		//opEx.testEx4();
-		//opEx.testEx5();
+		opEx.ex1();
+		opEx.ex2();
+		opEx.testEx1();
+		opEx.testEx2();
+		opEx.testEx3();
+		opEx.testEx4();
+		opEx.testEx5();
 
 	}
 

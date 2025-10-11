@@ -106,7 +106,7 @@ public class BranchExample {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("[가위바위보 게임~!]");
-		System.out.print("몇 판? ; ");
+		System.out.print("몇 판? : ");
 		int round = sc.nextInt();
 
 		// 승패 기록용 변수
