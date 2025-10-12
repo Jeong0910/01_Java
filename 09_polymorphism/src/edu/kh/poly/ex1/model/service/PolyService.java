@@ -207,7 +207,7 @@ public class PolyService {
 		
 		System.out.println( c2.toString() );
 		//String edu.kh.poly.ex1.model.dto.Car.toString()
-		// c2가 Car타입이므로 toString() 호출부가
+		// c2가 Car타입이므로 toString() 호출불가
 		// Car.toString() 메서드와 연결
 		// -> 정적바인딩
 		

@@ -36,7 +36,7 @@ public class Person extends Animal{
 
 	@Override
 	public void breath() {
-		// TODO Auto-generated method stub
+		
 		System.out.println("코와 입으로 숨쉰다");
 	}
 
