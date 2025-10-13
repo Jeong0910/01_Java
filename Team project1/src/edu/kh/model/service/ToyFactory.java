@@ -196,7 +196,7 @@ public class ToyFactory extends Toy {
 		Toy addToy = new Toy(toyName, age, price, colour, manufactureDate, materialSet);
 
 		boolean flag = false;
-		while (it.hasNext()) {// hasNext()는 반복문에서 다음 요소가 있는지 확인하는 메서드
+		while (it.hasNext()) {// hasNext()는 반복문에서 다음 요소가 있는지 확인하는 메서드(boolean true/false)
 			Toy toyInfo = it.next();
 			if (toyInfo.equals(addToy)) {
 				flag = true;
@@ -227,7 +227,7 @@ public class ToyFactory extends Toy {
 		boolean flag = false;
 
 		for (int i = 0; i < toys.size(); i++) {
-			if (list.get(i).getToyName().equals(input)) { //주의사항 : get***()은 Set컬렉션에서 사용할 수 없음으로 List써야함.
+			if (list.get(i).getToyName().equals(input)) { //주의사항 : get***()은 Set에서 사용할 수 없음으로 List써야함.
 		// list.get(i)가 돌때, getToyNmae와 인풋이 동일하다면
 				toys.remove(list.get(i));
 				flag = true;
