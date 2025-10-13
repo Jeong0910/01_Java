@@ -4,24 +4,25 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Toy implements Comparable<Toy> {
-	
+
 	private String toyName;
-	private int useAge;
+	private int age;
 	private int price;
 	private String colour;
 	private int manufactureDate;
-	private Set<String> ingredientSet;
-	
-	public Toy() {}
+	private Set<String> materialSet;
 
-	public Toy(String toyName, int useAge, int price, String colour, int manufactureDate, Set<String> ingredientSet) {
+	public Toy() {
+	}
+
+	public Toy(String toyName, int age, int price, String colour, int manufactureDate, Set<String> materialSet) {
 		super();
 		this.toyName = toyName;
-		this.useAge = useAge;
+		this.age = age;
 		this.price = price;
 		this.colour = colour;
 		this.manufactureDate = manufactureDate;
-		this.ingredientSet = ingredientSet;
+		this.materialSet = materialSet;
 	}
 
 	public String getToyName() {
@@ -32,12 +33,12 @@ public class Toy implements Comparable<Toy> {
 		this.toyName = toyName;
 	}
 
-	public int getUseAge() {
-		return useAge;
+	public int getage() {
+		return age;
 	}
 
-	public void setUseAge(int useAge) {
-		this.useAge = useAge;
+	public void setage(int age) {
+		this.age = age;
 	}
 
 	public int getPrice() {
@@ -64,23 +65,23 @@ public class Toy implements Comparable<Toy> {
 		this.manufactureDate = manufactureDate;
 	}
 
-	public Set<String> getIngredientSet() {
-		return ingredientSet;
+	public Set<String> getmaterialSet() {
+		return materialSet;
 	}
 
-	public void setIngredientSet(Set<String> ingredientSet) {
-		this.ingredientSet = ingredientSet;
+	public void setmaterialSet(Set<String> materialSet) {
+		this.materialSet = materialSet;
 	}
 
 	@Override
 	public int compareTo(Toy o) {
-		
-		return this.manufactureDate-o.manufactureDate;
+
+		return this.manufactureDate - o.manufactureDate;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(colour, ingredientSet, manufactureDate, price, toyName, useAge);
+		return Objects.hash(age, colour, manufactureDate, materialSet, price, toyName);
 	}
 
 	@Override
@@ -92,20 +93,18 @@ public class Toy implements Comparable<Toy> {
 		if (getClass() != obj.getClass())
 			return false;
 		Toy other = (Toy) obj;
-		return colour == other.colour && Objects.equals(ingredientSet, other.ingredientSet)
-				&& manufactureDate == other.manufactureDate && price == other.price
-				&& Objects.equals(toyName, other.toyName) && useAge == other.useAge;
+		return age == other.age && Objects.equals(colour, other.colour) && manufactureDate == other.manufactureDate
+				&& Objects.equals(materialSet, other.materialSet) && price == other.price
+				&& Objects.equals(toyName, other.toyName);
 	}
-	
+
 	@Override
 	public String toString() {
-		
-		return String.format("이름 : %s / 가격 : %d / 색상 : %s / 사용가능연령 : %d "
-				+ "/ 제조년월일 : %d / 재료 : %s\n",
-				toyName, price, colour, useAge, manufactureDate, ingredientSet);
+
+		String strIngredient = String.join(", ", materialSet);
+
+		return String.format("이름 : %s / 가격 : %d / 색상 : %s / 사용가능연령 : %d " + "/ 제조년월일 : %d / 재료 : %s", toyName, price,
+				colour, age, manufactureDate, strIngredient);
 	}
-	
-	public int compareTo (int index) {
-		return this.useAge-useAge;
-	}
+
 }
