@@ -1,4 +1,4 @@
-package edu.kh.model.run;
+package edu.kh.run;
 
 import edu.kh.model.service.ToyFactory;
 

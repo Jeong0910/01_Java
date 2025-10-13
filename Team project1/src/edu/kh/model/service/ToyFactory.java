@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -73,18 +72,23 @@ public class ToyFactory extends Toy {
 
 				switch (menuNum) {
 				case 1:
+					/* viewAllToys(); */
 					viewAllToys();
 					break;
 				case 2:
+					/* makeNewToys(); */
 					System.out.println(makeNewToys());
 					break;
 				case 3:
+					/* removeToys(); */
 					System.out.println(removeToys());
 					break;
 				case 4:
+					/* viewToysByMD(); */
 					System.out.println(viewToysByMD());
 					break;
 				case 5:
+					/* viewToysByUsableAge(); */
 					viewToysByUsableAge();
 					break;
 				case 6:
@@ -319,7 +323,7 @@ public class ToyFactory extends Toy {
 		System.out.println("<재료 삭제>");
 		printMaterials();
 
-		System.out.print("삭제한 재료명 입력:");
+		System.out.print("삭제할 재료명 입력:");
 		String name = sc.next();
 
 		boolean flag = false;

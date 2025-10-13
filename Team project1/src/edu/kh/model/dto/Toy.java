@@ -101,10 +101,10 @@ public class Toy implements Comparable<Toy> {
 	@Override
 	public String toString() {
 
-		String strIngredient = String.join(", ", materialSet);
+		String strMaterial = String.join(", ", materialSet);
 
 		return String.format("이름 : %s / 가격 : %d / 색상 : %s / 사용가능연령 : %d " + "/ 제조년월일 : %d / 재료 : %s", toyName, price,
-				colour, age, manufactureDate, strIngredient);
+				colour, age, manufactureDate, strMaterial);
 	}
 
 }
