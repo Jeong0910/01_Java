@@ -17,14 +17,29 @@ import edu.kh.model.dto.Toy;
 public class ToyFactory extends Toy {
 
 	private Scanner sc = new Scanner(System.in);
+	
+	// 중복된 Toy 객체가 없도록 저장할 컬렉션 중 Set
 	private Set<Toy> toys = new LinkedHashSet<>();
+	// 재료가 저장되어 있는 map
 	private Map<Integer, String> materialMap = new HashMap<>();
-
+	// -> Map<Integer, String>을 받는 materialmap이 new연산자 HashMap<> 생성.
+	
+	
+	
+	
+	// 가변인자 : 매개변수의 수가 정확히 몇개인지 특정할 수 없을 때 사용
+	// 자료형...변수명
+	// 가변인자를 통해 들어온 매개변수의 데이터 타입은 배열!
 	private Set<String> addMaterial(int... material) {
-
+		// 1. 매개변수로 전달받은 materials 파악하기 == 배열로 정수형 데이터가 여러개 
 		Set<String> str = new LinkedHashSet<>();
-
+		// 2. 재료를 저장하여 반환할 Set객체를 생성
+		// 3. addedMaterial 에 재료명을 추가해야함
+		// -> 단, 재료는 Map에 존재하는 것만 추가 가능
 		for (int item : material) {
+			// Map에서 재료 고유 번호(Key)에 대응하는 재료명(Value)를 가져와서
+			// addedMaterial 추가
+			// map에 없는 key를 입력하여 value를 얻어왔을 때 == null
 			if (materialMap.containsKey(item)) {
 				String value = materialMap.get(item);
 				str.add(value);
@@ -39,14 +54,16 @@ public class ToyFactory extends Toy {
 		materialMap.put(2, "플라스틱");
 		materialMap.put(3, "유리");
 		materialMap.put(4, "고무");
-
+		// materialmap.put()은 컬렉션Map을 사용해서 객체를 추가한다.
 		toys.add(new Toy("마미롱레그", 8, 36000, "분홍색", 19950805, addMaterial(1, 4)));
 		toys.add(new Toy("허기워기", 5, 12000, "파란색", 19940312, addMaterial(1, 2)));
 		toys.add(new Toy("키시미시", 5, 15000, "분홍색", 19940505, addMaterial(1, 2)));
 		toys.add(new Toy("캣냅", 8, 27000, "보라색", 19960128, addMaterial(1, 2)));
 		toys.add(new Toy("파피", 12, 57000, "빨간색", 19931225, addMaterial(1, 2, 4)));
+		// Set의 객체추가 add를 사용하여 뉴연산자 토이클래스에 정보추가.
 	}
-
+	
+	// 상속
 	public ToyFactory(String toyName, int age, int price, String colour, int manufactureDate, Set<String> materialSet) {
 		super(toyName, age, price, colour, manufactureDate, materialSet);
 	}
@@ -69,7 +86,8 @@ public class ToyFactory extends Toy {
 
 				System.out.print("선택 : ");
 				menuNum = sc.nextInt();
-
+				
+				// void에서는 호출형태, String에서는 프린트구문.
 				switch (menuNum) {
 				case 1:
 					/* viewAllToys(); */
@@ -119,15 +137,19 @@ public class ToyFactory extends Toy {
 	 */
 	public void viewAllToys() {
 		System.out.println("\n<전체 장난감 목록>");
-
+		
+		// .size()는 length(길이)와 같은 기능을 한다.
 		if (toys.size() == 0) {
 			System.out.println("장난감이 존재하지 않습니다.");
 		}
-
+		
+		// Set에서 사용해야하는 객체검색 Iterator.
 		Iterator<Toy> it = toys.iterator();
 		int index = 1;
+		// hasNext()는 가지고 있는 확인해준다.
 		while (it.hasNext()) {
 			System.out.println((index++) + ". " + it.next().toString());
+			// 여기서 index를 사용하는 이유는 번호를 넣기 위함이다.
 		}
 
 	}
@@ -153,16 +175,17 @@ public class ToyFactory extends Toy {
 		String input = "q";
 
 		Set<String> materialSet = new LinkedHashSet<String>();
-
+		
 		while (true) {
 			System.out.print("재료를 입력하세요 (종료하려면 'q'를 입력하세요): ");
 			input = sc.next();
 
-			if (input.equals("q"))
+			if (input.equals("q"))// equal 문자열
 				break;
 
 			if (materialMap.containsValue(input)) {
-				materialSet.add(input);
+				materialSet.add(input);// 매터리얼맵에 인풋(재료)에 기입한 값이 존재한다면,
+										//매터리얼셋에 인풋(재료)를 추가한다.
 			} else {
 				System.out.println("존재하지 않는 재료입니다.");
 			}
@@ -173,7 +196,7 @@ public class ToyFactory extends Toy {
 		Toy addToy = new Toy(toyName, age, price, colour, manufactureDate, materialSet);
 
 		boolean flag = false;
-		while (it.hasNext()) {
+		while (it.hasNext()) {// hasNext()는 반복문에서 다음 요소가 있는지 확인하는 메서드
 			Toy toyInfo = it.next();
 			if (toyInfo.equals(addToy)) {
 				flag = true;
@@ -204,7 +227,8 @@ public class ToyFactory extends Toy {
 		boolean flag = false;
 
 		for (int i = 0; i < toys.size(); i++) {
-			if (list.get(i).getToyName().equals(input)) {
+			if (list.get(i).getToyName().equals(input)) { //주의사항 : get***()은 Set컬렉션에서 사용할 수 없음으로 List써야함.
+		// list.get(i)가 돌때, getToyNmae와 인풋이 동일하다면
 				toys.remove(list.get(i));
 				flag = true;
 				break;
@@ -227,7 +251,7 @@ public class ToyFactory extends Toy {
 		System.out.println("<제조일 순으로 장난감을 정렬>");
 		List<Toy> list = new ArrayList<Toy>(toys);
 
-		String result = "";
+		String result = ""; // 넘버를 새기기 위한 용도.
 		Collections.sort(list);
 		for (int i = 0; i < toys.size(); i++) {
 			result += ((i + 1) + ". " + list.get(i)) + "\n";
@@ -253,8 +277,9 @@ public class ToyFactory extends Toy {
 		List<Toy> toyLists = new ArrayList<Toy>(toys);
 		List<Integer> ageList = new ArrayList<Integer>(ageInfo);
 
-		Collections.sort(ageList);
-		Collections.sort(toyLists, new Comparator<Toy>() {
+		Collections.sort(ageList); // 오름차순 정렬
+		Collections.sort(toyLists, new Comparator<Toy>() { // Comparator은 collection.sort( , ) 두번째 인자에서 compare 사용.
+															// comparable은 클래스에서 사용하여 오버라이딩 CompareTo 사용.
 			public int compare(Toy o1, Toy o2) {
 				return o2.getManufactureDate() - o1.getManufactureDate();
 			}
@@ -275,10 +300,11 @@ public class ToyFactory extends Toy {
 	/**
 	 * sub method : 6, 7 메소드에서 재료 출력 드라이버 : 정석원, 네비게이터 : 안재훈
 	 */
-	public void printMaterials() {
+	public void printMaterials() { // 서브 메서드
 		System.out.println("===현재 등록 재료===");
 		for (Map.Entry<Integer, String> material : materialMap.entrySet()) {
-
+			// 리턴 타입 Map.Entry<Integer, String> 키와 값의 쌍으로 구성된 
+			// 모든 Map.Entry 객체를 set에 담아서 리턴.
 			System.out.println(material.getKey() + ":" + material.getValue());
 
 		}
@@ -292,7 +318,7 @@ public class ToyFactory extends Toy {
 
 	public void addMaterials() {
 		System.out.println("<재료 추가>");
-		printMaterials();
+		printMaterials(); // 서브 메서드 호출
 		System.out.print("재료 고유번호(key) 입력:");
 		int input = sc.nextInt();
 

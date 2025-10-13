@@ -3,15 +3,18 @@ package edu.kh.model.dto;
 import java.util.Objects;
 import java.util.Set;
 
+// implements Comparable<Toy>는 Toy클래스가 상속받는다.
 public class Toy implements Comparable<Toy> {
 
+	//필드
 	private String toyName;
 	private int age;
 	private int price;
 	private String colour;
 	private int manufactureDate;
 	private Set<String> materialSet;
-
+	
+	//메서드
 	public Toy() {
 	}
 
@@ -24,7 +27,7 @@ public class Toy implements Comparable<Toy> {
 		this.manufactureDate = manufactureDate;
 		this.materialSet = materialSet;
 	}
-
+	
 	public String getToyName() {
 		return toyName;
 	}
@@ -72,13 +75,16 @@ public class Toy implements Comparable<Toy> {
 	public void setmaterialSet(Set<String> materialSet) {
 		this.materialSet = materialSet;
 	}
-
+	
+	// implements comparable 에 의해 사용되는 오름차순 오버라이딩 compareTo.
 	@Override
 	public int compareTo(Toy o) {
 
 		return this.manufactureDate - o.manufactureDate;
 	}
-
+	
+	// 모든 Hash를 사용할때 중복 코드를 방지해준다 (ex. ToyFactory 기본메서드에서 값이 중복되는
+	// 것을 중복코드를 방지해준다 * 전체가 같을때.)
 	@Override
 	public int hashCode() {
 		return Objects.hash(age, colour, manufactureDate, materialSet, price, toyName);
@@ -102,7 +108,7 @@ public class Toy implements Comparable<Toy> {
 	public String toString() {
 
 		String strMaterial = String.join(", ", materialSet);
-
+		// String.join( 바꿀 형식 ,  ) 형식을 바꿔준다.
 		return String.format("이름 : %s / 가격 : %d / 색상 : %s / 사용가능연령 : %d " + "/ 제조년월일 : %d / 재료 : %s", toyName, price,
 				colour, age, manufactureDate, strMaterial);
 	}
