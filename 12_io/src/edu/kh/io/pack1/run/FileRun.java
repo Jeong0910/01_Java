@@ -1,6 +1,6 @@
-package edu.kh.pack1.run;
+package edu.kh.io.pack1.run;
 
-import edu.kh.pack1.model.service.FileService;
+import edu.kh.io.pack1.model.service.FileService;
 
 public class FileRun {
 
@@ -8,8 +8,7 @@ public class FileRun {
 		FileService service = new FileService();
 		//service.method1();
 		//service.method2();
-		service.method2();
-
+		//service.method3();
 	}
 
 }
